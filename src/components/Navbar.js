@@ -1,9 +1,9 @@
 import React from "react";
-import {NavLink,Link , withRouter} from "react-router-dom";
+import {NavLink , withRouter} from "react-router-dom";
 
 const Navbar = (props)=>
 {
-    //console.log(props);
+    console.log(props);
     // setTimeout(()=>{
     //     props.history.push('/about');
     // },2000);

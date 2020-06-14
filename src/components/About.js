@@ -1,4 +1,5 @@
 import React from "react";
+import RainBow from "../hoc/RainBow";
 
 const About = (props)=>
 {
@@ -13,4 +14,4 @@ const About = (props)=>
     );
 };
 
-export default About;
+export default RainBow(About);
