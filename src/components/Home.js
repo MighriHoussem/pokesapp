@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import PoketBall from "../../src/poketBall.png";
+import {connect} from "react-redux";
 
 class Home extends Component
 {
@@ -12,27 +13,28 @@ class Home extends Component
     constructor(props)
     {
         super(props);
-        this.state = {
-          posts : []
-        };
+        // this.state = {
+        //   posts : []
+        // };
     }
-    componentDidMount() {
-        axios.get("https://jsonplaceholder.typicode.com/posts").then(response=>{
-            console.log(response);
-            this.setState({
-               posts: response.data.slice(0,10)
-            });
-            console.log(this.state);
-        }).catch(error=>{
-            console.log(error);
-        });
-    };
+    // componentDidMount() {
+    //     axios.get("https://jsonplaceholder.typicode.com/posts").then(response=>{
+    //         console.log(response);
+    //         this.setState({
+    //            posts: response.data.slice(0,10)
+    //         });
+    //         console.log(this.state);
+    //     }).catch(error=>{
+    //         console.log(error);
+    //     });
+    // };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     };
 
     render() {
-        const { posts } = this.state;
+        console.log(this.props);
+        const { posts } = this.props;
         const postsList = posts.length? (
             posts.map(post => {
                 return (
@@ -64,5 +66,12 @@ class Home extends Component
 
 
 }
+const mapStateToProps = (state)=> {
+    return {
+        posts : state.posts
+    }
+};
+const  mapDispatchToProps = ()=> {
 
-export default Home;
+};
+export default connect(mapStateToProps)(Home);
