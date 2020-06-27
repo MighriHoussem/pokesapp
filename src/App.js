@@ -8,6 +8,7 @@ import Post from "./components/Post";
 import rootReducer from "./reducers/rootReducer";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
+import Posts from "./components/Posts";
 
 const store = createStore(rootReducer);
 
@@ -23,7 +24,9 @@ class App extends Component {
                             <Route  exact path="/" component={Home} />
                             <Route path="/contact" component={Contact} />
                             <Route path ="/about" component={About} />
-                            <Route path="/:post_id" component={Post}/>
+                            <Route exact path="/postHome/:post_id" component={Post}/>
+                            <Route path="/posts" component = {Posts}/>
+                            <Route path="/post/:idPost" component={ Posts}/>
                         </Switch>
                      </div>
 

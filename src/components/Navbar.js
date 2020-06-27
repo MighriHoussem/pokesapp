@@ -13,6 +13,7 @@ const Navbar = (props)=>
                 <a className="brand-logo">Poke's times</a>
                 <ul className="right">
                     <li><NavLink to="/" className="">Home</NavLink></li>
+                    <li><NavLink to="/posts">Posts</NavLink></li>
                     <li><NavLink to="/contact">Contact</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                 </ul>
