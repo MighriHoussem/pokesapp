@@ -58,19 +58,27 @@ const Posts = (props) => {
     //Replace componentWillReceiveProps in class
     useEffect(()=>{
         if(props.match.params.idPost && props.match.params.idPost !== undefined)
-            axios.get("https://jsonplaceholder.typicode.com/posts").then(response=>{
-                let postsView = response.data.slice(0,5);
-                if(posts.length === 0)
-                setPosts(postsView);
-                let current = postsView.filter(post=>post.id == props.match.params.idPost);
-                console.log("currentPost Parent",current);
+            if(posts.length === 0) {
+                axios.get("https://jsonplaceholder.typicode.com/posts").then(response => {
+                    let postsView = response.data.slice(0, 5);
+                    if (posts.length === 0)
+                        setPosts(postsView);
+                    let current = postsView.filter(post => post.id == props.match.params.idPost);
+                    console.log("currentPost Parent", current);
+                    setCurrentPost(current[0]);
+                    console.log(posts);
+                    console.log(response.data.slice(0, 10));
+                    console.log("effect idPost");
+                }).catch(error => {
+                    console.log(error);
+                });
+            }else
+            {
+                let current = posts.filter(post => post.id == props.match.params.idPost);
+                console.log("currentPost Parent 2", current);
                 setCurrentPost(current[0]);
-                console.log(posts);
-                console.log(response.data.slice(0,10));
-                console.log("effect idPost");
-            }).catch(error=>{
-                console.log(error);
-            });
+            }
+
     },[props.match.params.idPost]);
 
 
